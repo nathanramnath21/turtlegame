@@ -1,5 +1,6 @@
 var turtle, car, turtleImg;
 var gameState;
+var road;
 var score = 0;
 var bgImg1;
 var gameState= "begin";
@@ -12,15 +13,19 @@ function preload(){
     car1 = loadImage("Images/car1.png")
 
     car2 = loadImage("Images/car2.png")
-    car2.scale= 0.5;
+    //car2.scale= 0.1;
     car3 = loadImage("Images/car3.png")
+    //car3.scale = 0.1;
     car4 = loadImage("Images/car4.png")
+    //car4.scale = 0.1;
 
 }
 
 function setup(){
-   createCanvas(displayWidth, displayHeight);
-   turtle = createSprite(displayWidth/2, displayHeight/2+400);
+   createCanvas(1000, displayHeight);
+    road = createSprite(500, displayHeight/2);
+    road.addImage("road", bgImg1)
+    turtle = createSprite(displayWidth/2, displayHeight/2+400);
    turtle.addImage("running", turtleImg);
     turtle.scale = 0.2;
 
@@ -28,10 +33,10 @@ function setup(){
 }
 
 function draw(){
-    background(bgImg1);
-    //background(224, 142, 0);
+    //background(bgImg1);
+    background(224, 142, 0);
     //camera.position.y = displayWidth/2;
-
+    console.log(turtle.y)
     if(gameState === "begin"){
         
         turtleMovement();
@@ -66,14 +71,13 @@ function turtleMovement(){
     if (keyWentUp(RIGHT_ARROW)) {
         turtle.velocityX=0;
     }
-    drawSprites();
 }
 
 function spawnCars(){
 
         if (frameCount %80===0){
             var car = createSprite(displayWidth/8,displayHeight/8,10,10)
-            car.y = Math.round(random(800,25))
+            car.y = Math.round(random(70,800));
             
             var rand = Math.round(random(1,6));
     switch(rand) {
