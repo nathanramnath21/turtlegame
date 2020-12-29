@@ -42,7 +42,8 @@ function draw(){
         turtleMovement();
         spawnCars();
     }
-        
+    textSize(15)
+    text("Use the up and down arrow keys to get to the other side", 25,825)
     drawSprites();
 }   
 
@@ -76,7 +77,7 @@ function turtleMovement(){
 function spawnCars(){
 
         if (frameCount %80===0){
-            var car = createSprite(displayWidth/8,displayHeight/8,10,10)
+            var car = createSprite(10,displayHeight/8,10,10)
             car.y = Math.round(random(70,800));
             
             var rand = Math.round(random(1,6));
